@@ -1,0 +1,24 @@
+[build]
+	publish = "public"
+	command = "yarn build:playground"
+
+[build.processing]
+	skip_processing = true
+
+[[redirects]]
+	from = "https://admiring-kare-b5e53d.netlify.com/*"
+	to = "https://sidebar.schneiders.space/"
+	status = 302
+	force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+	for = "/*"
+	[headers.values]
+		X-Content-Type-Options = "nosniff"
+		X-Frame-Options = "DENY"
+		X-XSS-Protection = "1; mode=block"

@@ -1,0 +1,74 @@
+{
+	"name": "svelte_sidebar",
+	"version": "0.0.1",
+	"keywords": [
+		"svelte",
+		"sidebar",
+		"sidebar-component",
+		"sidebar-navigation",
+		"collapsible-tree",
+		"navigation-links",
+		"navigation-hierarchy",
+		"navigation-routes"
+	],
+	"homepage": "http://sidebar.schneiders.space",
+	"bugs": {
+		"url": "https://github.com/philipp-tailor/svelte_sidebar/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/philipp-tailor/svelte_sidebar.git"
+	},
+	"license": "MIT",
+	"contributors": [
+		"Philipp Tailor (http://schneiders.space)"
+	],
+	"exports": {
+		"import": "./index.js",
+		"default": "./index.js"
+	},
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"files": [
+		"dist",
+		"src/components/Sidebar"
+	],
+	"scripts": {
+		"autobuild:playground": "rollup -c rollup.config.playground.js -w",
+		"build:package": "rollup -c rollup.config.package.js",
+		"build:playground": "rollup -c rollup.config.playground.js",
+		"clean:playground": "find ./public -type f -name \"*.js\" -o -name \"*.map\" -o -name \"*.css\" | xargs rm",
+		"dev:playground": "yarn clean:playground && yarn start:dev:playground & yarn autobuild:playground",
+		"prepublishOnly": "pinst --disable",
+		"postpublish": "pinst --enable",
+		"start:dev:playground": "serve"
+	},
+	"lint-staged": {
+		"*.{js,css,json,svelte}": [
+			"prettier --write"
+		]
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^21.0.3",
+		"@rollup/plugin-node-resolve": "^13.2.0",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.3.7",
+		"pinst": "^3.0.0",
+		"prettier": "^2.6.0",
+		"prettier-plugin-packagejson": "^2.2.15",
+		"prettier-plugin-svelte": "^2.7.0",
+		"rollup": "^2.70.1",
+		"rollup-plugin-css-only": "^3.1.0",
+		"rollup-plugin-livereload": "^2.0.5",
+		"rollup-plugin-md": "^1.0.1",
+		"rollup-plugin-svelte": "^7.1.0",
+		"rollup-plugin-terser": "^7.0.2",
+		"rollup-plugin-visualizer": "^4.2.0",
+		"serve": "^13.0.2",
+		"svelte": "^3.47.0"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"svelte": "src/components/Sidebar/index.js"
+}
